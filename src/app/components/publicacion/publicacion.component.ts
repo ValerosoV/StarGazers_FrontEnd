@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 
 @Component({
@@ -8,18 +12,23 @@ import { PublicacionService } from 'src/app/services/publicacion.service';
 })
 export class PublicacionComponent {
   publicacionesList: any = [];
-  nombreUsuario = "";
-  apellidoUsuario = "";
-  rolUsuario = 0;
+  publicacionForm: any = this.formBuilder.group({
+    usuarioQueLaSubio: '',
+    contenido: ''
+  })
 
-  constructor(private publicacionService: PublicacionService) {
+  constructor(private publicacionService: PublicacionService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private toastr: ToastrService) {
   }
-  
+
   ngOnInit() {
+    if (localStorage.getItem('rol') == null) {
+      this.router.navigate(['/login']);
+    }
     this.getAllPublicaciones();
-    this.nombreUsuario = ""+localStorage.getItem('nombre');
-    this.apellidoUsuario = ""+localStorage.getItem('apellido');
-    this.rolUsuario = Number(localStorage.getItem('rol'));  
+
   }
 
   getAllPublicaciones() {
@@ -29,4 +38,28 @@ export class PublicacionComponent {
       }
     );
   }
+
+  newPublicacionEntry() {
+    this.publicacionForm.controls['usuarioQueLaSubio'].setValue(localStorage.getItem('id'));
+    console.log(this.publicacionForm.value);
+    this.publicacionService.newPublicacion(localStorage.getItem('accessToken'), this.publicacionForm.value).subscribe(
+      () => {
+        //Redirigiendo a la ruta actual /animal y recargando la ventana
+        this.router.navigate(['/publicaciones']).then(() => {
+          this.newMessage('Registro exitoso');
+        })
+      }
+    );
+  }
+
+  newMessage(messageText: string) {
+    this.toastr.success('Clic aquí para actualizar la lista', messageText)
+      .onTap
+      .pipe(take(1))
+      .subscribe(() => window.location.reload());
+  }
+
+
+
+
 }
