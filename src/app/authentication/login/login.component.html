@@ -1,30 +1,30 @@
 <div class="container-fluid position-relative d-flex p-0">
     <!-- Spinner Start -->
     <!--<div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
         </div>
     </div>-->
     <!-- Spinner End -->
   
-    <!-- Container Start -->
     <div class="container-fluid">
+    <!-- Container Start -->
         <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
             <!-- CONTENEDOR VIDEO-->
             <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center bg-dark">
                 <div class="video-container" style="margin-left: 100px;">
                     <video width="100%" height="auto" controls autoplay loop>
                         <source src="assets/video/StarGazers_Video_InicioSesion.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
                     </video>
+                        Your browser does not support the video tag.
                 </div>
             </div>
-            
             <!-- CONTENEDOR INICIO DE SESION -->
+            
             <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center">
                 <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <a href="index.html" class="">
+                      <a href="/login" class="">
                             <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>StarsGazers</h3>
                         </a>
                     </div>
@@ -39,8 +39,8 @@
                         <div class="form-floating mb-4">
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="clave" ngModel>
                             <label for="floatingPassword">Clave</label>
-                        </div>
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Entrar</button>
+                        </div>
                         <p class="text-center mb-0">¿No tienes una cuenta? <a href="/signup">Registrarse</a></p>
                     </form>
                 </div>

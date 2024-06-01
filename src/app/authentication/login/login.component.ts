@@ -26,7 +26,8 @@ export class LoginComponent {
         localStorage.setItem('nombre',JSON.parse(JSON.stringify(res)).nombre);
         localStorage.setItem('apellido',JSON.parse(JSON.stringify(res)).apellido);
         localStorage.setItem('rol',JSON.parse(JSON.stringify(res)).rol);
-        this.router.navigateByUrl('/animal');
+        localStorage.setItem('id',JSON.parse(JSON.stringify(res)).id);
+        this.router.navigateByUrl('/publicaciones');
       }
     );
   }

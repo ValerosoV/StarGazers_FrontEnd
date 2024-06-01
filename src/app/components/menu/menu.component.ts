@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,9 +10,22 @@ export class MenuComponent {
   title = 'Zoológico';
   user = 'Usuario';
   rolUsuario = 0;
+  nombreUsuario = "";
+  apellidoUsuario = "";
+  
 
+  constructor(private router: Router) {
+    
+  }
   ngOnInit() {
     this.rolUsuario = Number(localStorage.getItem('rol'));
+    this.nombreUsuario = ""+localStorage.getItem('nombre');
+    this.apellidoUsuario = ""+localStorage.getItem('apellido');
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }
 
