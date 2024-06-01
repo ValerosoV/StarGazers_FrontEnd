@@ -20,4 +20,16 @@ export class PublicacionService {
       }
     });
   }
+
+  newPublicacion(token: any, data: any): Observable<any> {
+    return this.http.post<any>(
+      this.apiUri+"/crear",
+      data,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          accessToken: `${token}`
+        }
+      });
+  }
 }

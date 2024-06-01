@@ -8,7 +8,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 
 const routes: Routes = [
-  {path: '',component: LoginComponent},
+  {path: '',component: PublicacionComponent},
   {path: 'animal',component: AnimalComponent},
   {path: 'signup',component: SignupComponent},
   {path: 'login',component: LoginComponent},
