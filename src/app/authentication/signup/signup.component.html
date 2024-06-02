@@ -15,46 +15,53 @@
                                 <h1 class="h4 text-gray-900 mb-4">Nuevo Usuario</h1>
                             </div>
                             <form class="user" (ngSubmit)="onRegister(formLogin)" #formLogin="ngForm">
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="text" class="form-control form-control-user" id="exampleInputUser"
                                            aria-describedby="emailHelp" placeholder="Nombre" name="nombre" ngModel>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="text" class="form-control form-control-user" id="exampleInputUser"
                                            aria-describedby="emailHelp" placeholder="Apellido" name="apellido" ngModel>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="text" class="form-control form-control-user" id="exampleInputUser"
                                            aria-describedby="emailHelp" placeholder="Nacionalidad" name="nacionalidad" ngModel>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="number" class="form-control form-control-user" id="exampleInputUser"
                                            aria-describedby="emailHelp" placeholder="Edad" name="edad" ngModel>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="number" class="form-control form-control-user" id="exampleInputUser"
                                            aria-describedby="emailHelp" placeholder="Teléfono" name="telefono" ngModel>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="text" class="form-control form-control-user" id="exampleInputUser"
                                            aria-describedby="emailHelp" placeholder="Intereses" name="intereses" ngModel>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="text" class="form-control form-control-user" id="exampleInputUser"
                                            aria-describedby="emailHelp" placeholder="Usuario" name="usuario" ngModel>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
                                            aria-describedby="emailHelp" placeholder="Correo" name="correo" ngModel>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group separar_horizont">
                                     <input type="password" class="form-control form-control-user" id="exampleInputPassword"
                                            placeholder="Clave" name="clave" ngModel autocomplete="on">
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">
-                                    Iniciar sesión
-                                </button>
+                                <div>
+                                    <button (click)="onReturn()" class="btn btn-primary btn-user btn-block comp_separado" style="margin-right: 150px;">
+                                        Regresar
+                                    </button>
+
+                                    <button type="submit" class="btn btn-primary btn-user btn-block comp_separado"  >
+                                        Registrarse 
+                                    </button>                                    
+                                </div>
                             </form>
+                            
                             <hr>
                         </div>
                     </div>

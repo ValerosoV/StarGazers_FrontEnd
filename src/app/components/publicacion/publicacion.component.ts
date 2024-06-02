@@ -44,9 +44,9 @@ export class PublicacionComponent {
     console.log(this.publicacionForm.value);
     this.publicacionService.newPublicacion(localStorage.getItem('accessToken'), this.publicacionForm.value).subscribe(
       () => {
-        //Redirigiendo a la ruta actual /animal y recargando la ventana
+        //Redirigiendo a la ruta actual /publicaciones, lo que carga nuevamente la ventana
         this.router.navigate(['/publicaciones']).then(() => {
-          this.newMessage('Registro exitoso');
+          this.newMessage('Publicado correctamente');
         })
       }
     );
