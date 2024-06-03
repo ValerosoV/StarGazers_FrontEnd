@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,43 +6,24 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PerfilService {
-
-  apiUri = '/api';
-  getSingleUri = '/api//Usuario/perfiles/:id'
-  updateUri = '/api/usuario/editar/:id'; 
-  
+  private apiUrl = '/api/usuarios';
 
   constructor(private http: HttpClient) { }
 
-  /*getAllPerfilesData(token: any): Observable<any> {
-
-    return this.http.get(this.apiUri, {
-      headers:
-      {
-        'Content-Type': 'application/json',
-      }
-    });
-  }*/
-
-  getPerfil(id: string): Observable<any> {
-    const url = this.getSingleUri.replace(':id', id);
-    return this.http.get(this.getSingleUri, {
-      headers:
-      {
-        'Content-Type': 'application/json',
-      }
-    });
+  getPerfil(userId: string): Observable<any> {
+    const url = `${this.apiUrl}/${userId}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(url, { headers });
   }
 
-  updatePerfilData(id: string, data: any): Observable<any> {
-    const url = this.updateUri.replace(':id', id);
-    return this.http.put(url, data, {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-
+  updatePerfil(userId: string, data: any): Observable<any> {
+    const url = `${this.apiUrl}/${userId}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(url, data, { headers });
   }
 
+  subirFotoPerfil(userId: string, formData: FormData): Observable<any> {
+    const url = `${this.apiUrl}/${userId}/foto`;
+    return this.http.post(url, formData);
+  }
 }
-

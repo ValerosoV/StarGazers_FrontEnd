@@ -1,49 +1,66 @@
+<!-- perfil.component.html -->
 <app-menu></app-menu>
 
 <div class="content">
-  <!-- No se Como pero ahora tengo un container visible -->
   <div class="container-fluid pt-4 px-4">
-    <div _ngcontent-jxn-c8="" class="bg-secondary rounded h-100 p-4">
-      <div _ngcontent-jxn-c8="" class="m-n2">
-      </div> 
-    </div>          
-        
+    <div class="bg-secondary rounded h-100 p-4">
+      <div class="m-n2">
+        <h2 class="mb-4">Perfil de Usuario</h2>
 
-    <!-- Button Start 
-      <div class="container mt-4">
-    <h2>Mi Perfil</h2>
-    <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="profile-pic">
+              <img [src]="perfilData?.fotoUrl || 'assets/default-profile.png'" alt="Foto de Perfil" class="img-fluid">
+              <div class="upload-pic">
+                <input type="file" (change)="onFileSelected($event)" #fileInput>
+                <button class="btn btn-primary" (click)="fileInput.click()">Cambiar Foto</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="profile-info">
+              <p><strong>Nombre:</strong> {{ perfilData?.nombre }} {{ perfilData?.apellido }}</p>
+              <p><strong>Correo electrónico:</strong> {{ perfilData?.correo }}</p>
+              <p><strong>Nacionalidad:</strong> {{ perfilData?.nacionalidad }}</p>
+              <p><strong>Edad:</strong> {{ perfilData?.edad }}</p>
+              <p><strong>Teléfono:</strong> {{ perfilData?.telefono }}</p>
+              <p><strong>Intereses:</strong> {{ perfilData?.intereses }}</p>
+              <p><strong>Seguidores:</strong> {{ perfilData?.seguidores }}</p>
+              <p><strong>Rol:</strong> {{ perfilData?.rol }}</p>
+            </div>
+            <div class="edit-info">
+              <button class="btn btn-primary" (click)="enableEditing()">Editar Información</button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="isEditing" class="edit-form">
+          <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre" formControlName="nombre">
+            </div>
+            <div class="form-group">
+              <label for="apellido">Apellido</label>
+              <input type="text" class="form-control" id="apellido" formControlName="apellido">
+            </div>
+            <div class="form-group">
+              <label for="nacionalidad">Nacionalidad</label>
+              <input type="text" class="form-control" id="nacionalidad" formControlName="nacionalidad">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono" formControlName="telefono">
+            </div>
+            <div class="form-group">
+              <label for="intereses">Intereses</label>
+              <input type="text" class="form-control" id="intereses" formControlName="intereses">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          </form>
+        </div>
+
       </div>
-      <div class="mb-3">
-        <label for="apellido" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="apellido" formControlName="apellido" required>
-      </div>
-      <div class="mb-3">
-        <label for="nacionalidad" class="form-label">Nacionalidad</label>
-        <input type="text" class="form-control" id="nacionalidad" formControlName="nacionalidad" required>
-      </div>
-      <div class="mb-3">
-        <label for="edad" class="form-label">Edad</label>
-        <input type="number" class="form-control" id="edad" formControlName="edad" required>
-      </div>
-      <div class="mb-3">
-        <label for="telefono" class="form-label">Teléfono</label>
-        <input type="text" class="form-control" id="telefono" formControlName="telefono" required>
-      </div>
-      <div class="mb-3">
-        <label for="intereses" class="form-label">Intereses</label>
-        <textarea class="form-control" id="intereses" formControlName="intereses" required></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="clave" class="form-label">Cambiar Clave</label>
-        <input type="password" class="form-control" id="clave" formControlName="clave">
-      </div>
-      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    </form>
-  </div>
-  -->
+    </div>
   </div>
 </div>
