@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+
   title = 'Zoológico';
   user = 'Usuario';
   rolUsuario = 0;

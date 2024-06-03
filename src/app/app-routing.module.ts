@@ -6,6 +6,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   {path: '',component: PublicacionComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'logout',component: AppComponent},
   {path: 'menu',component: MenuComponent},
   {path: 'publicaciones',component: PublicacionComponent},
+  {path: 'perfil',component: PerfilComponent},
 ];
 
 @NgModule({

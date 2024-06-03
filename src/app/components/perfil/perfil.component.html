@@ -1,0 +1,48 @@
+<app-menu></app-menu>
+<div class="container mt-4">
+    <h2>Mi Perfil</h2>
+    <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+      </div>
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="apellido" formControlName="apellido" required>
+      </div>
+      <div class="mb-3">
+        <label for="correo" class="form-label">Correo</label>
+        <input type="email" class="form-control" id="correo" formControlName="correo" [disabled]="isDisabled">
+      </div>
+      <div class="mb-3">
+        <label for="nacionalidad" class="form-label">Nacionalidad</label>
+        <input type="text" class="form-control" id="nacionalidad" formControlName="nacionalidad" required>
+      </div>
+      <div class="mb-3">
+        <label for="edad" class="form-label">Edad</label>
+        <input type="number" class="form-control" id="edad" formControlName="edad" required>
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" formControlName="telefono" required>
+      </div>
+      <div class="mb-3">
+        <label for="intereses" class="form-label">Intereses</label>
+        <textarea class="form-control" id="intereses" formControlName="intereses" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="seguidores" class="form-label">Seguidores</label>
+        <input type="number" class="form-control" id="seguidores" formControlName="seguidores" [disabled]="isDisabled">
+      </div>
+      <div class="mb-3">
+        <label for="rol" class="form-label">Rol</label>
+        <input type="number" class="form-control" id="rol" formControlName="rol" [disabled]="isDisabled">
+      </div>
+      <div class="mb-3">
+        <label for="clave" class="form-label">Cambiar Clave</label>
+        <input type="password" class="form-control" id="clave" formControlName="clave">
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+  </div>
+  
