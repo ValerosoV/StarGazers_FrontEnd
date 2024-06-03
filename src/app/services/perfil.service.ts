@@ -13,25 +13,14 @@ export class PerfilService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPerfilesData(token: any): Observable<any> {
-
-    return this.http.get(this.apiUri, {
-      headers:
-      {
-        'Content-Type': 'application/json',
-      }
-    });
+  getPerfilData(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUri}/perfil/${userId}`);
   }
 
-  updatePerfilData(id: string, data: any): Observable<any> {
-    const url = this.updateUri.replace(':id', id);
-    return this.http.put(url, data, {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-
+  updatePerfilData(userId: string, perfilData: any): Observable<any> {
+    return this.http.put<any>(`${this.updateUri}/perfil/${userId}`, perfilData);
   }
+   
 
 }
 
