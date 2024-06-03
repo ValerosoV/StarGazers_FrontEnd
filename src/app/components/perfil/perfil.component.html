@@ -1,82 +1,38 @@
 <app-menu></app-menu>
-<div *ngIf="perfil">
-  
-  <div>
-    <!-- Botón para alternar entre el modo de edición y el modo de visualización -->
-    <button (click)="toggleEdit()" *ngIf="!isEditing">Editar</button>
-    <button (click)="toggleEdit()" *ngIf="isEditing">Cancelar</button>
+<div class="container mt-4">
+    <h2>Mi Perfil</h2>
+    <!-- Button Start 
+    <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+      </div>
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="apellido" formControlName="apellido" required>
+      </div>
+      <div class="mb-3">
+        <label for="nacionalidad" class="form-label">Nacionalidad</label>
+        <input type="text" class="form-control" id="nacionalidad" formControlName="nacionalidad" required>
+      </div>
+      <div class="mb-3">
+        <label for="edad" class="form-label">Edad</label>
+        <input type="number" class="form-control" id="edad" formControlName="edad" required>
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" formControlName="telefono" required>
+      </div>
+      <div class="mb-3">
+        <label for="intereses" class="form-label">Intereses</label>
+        <textarea class="form-control" id="intereses" formControlName="intereses" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="clave" class="form-label">Cambiar Clave</label>
+        <input type="password" class="form-control" id="clave" formControlName="clave">
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
   </div>
-
-  <!-- Campo de Nombre -->
-  <div>
-    <label>Nombre:</label>
-    <span *ngIf="!isEditing">{{ perfil.nombre }}</span> <!-- Muestra el nombre en modo de solo lectura -->
-    <input *ngIf="isEditing" [(ngModel)]="perfil.nombre"> <!-- Campo de entrada para editar el nombre -->
-  </div>
-
-  <!-- Campo de Apellido -->
-  <div>
-    <label>Apellido:</label>
-    <span *ngIf="!isEditing">{{ perfil.apellido }}</span> <!-- Muestra el apellido en modo de solo lectura -->
-    <input *ngIf="isEditing" [(ngModel)]="perfil.apellido"> <!-- Campo de entrada para editar el apellido -->
-  </div>
-
-  <!-- Campo de Correo -->
-  <div>
-    <label>Correo:</label>
-    <span *ngIf="!isEditing">{{ perfil.correo }}</span> <!-- Muestra el correo en modo de solo lectura -->
-    <input *ngIf="isEditing" [(ngModel)]="perfil.correo" disabled> <!-- Campo de entrada para editar el correo, deshabilitado -->
-  </div>
-
-  <!-- Campo de Nacionalidad -->
-  <div>
-    <label>Nacionalidad:</label>
-    <span *ngIf="!isEditing">{{ perfil.nacionalidad }}</span> <!-- Muestra la nacionalidad en modo de solo lectura -->
-    <input *ngIf="isEditing" [(ngModel)]="perfil.nacionalidad"> <!-- Campo de entrada para editar la nacionalidad -->
-  </div>
-
-  <!-- Campo de Edad -->
-  <div>
-    <label>Edad:</label>
-    <span *ngIf="!isEditing">{{ perfil.edad }}</span> <!-- Muestra la edad en modo de solo lectura -->
-    <input *ngIf="isEditing" [(ngModel)]="perfil.edad"> <!-- Campo de entrada para editar la edad -->
-  </div>
-
-  <!-- Campo de Teléfono -->
-  <div>
-    <label>Teléfono:</label>
-    <span *ngIf="!isEditing">{{ perfil.telefono }}</span> <!-- Muestra el teléfono en modo de solo lectura -->
-    <input *ngIf="isEditing" [(ngModel)]="perfil.telefono"> <!-- Campo de entrada para editar el teléfono -->
-  </div>
-
-  <!-- Campo de Intereses -->
-  <div>
-    <label>Intereses:</label>
-    <span *ngIf="!isEditing">{{ perfil.intereses }}</span> <!-- Muestra los intereses en modo de solo lectura -->
-    <input *ngIf="isEditing" [(ngModel)]="perfil.intereses"> <!-- Campo de entrada para editar los intereses -->
-  </div>
-
-  <!-- Campo de Seguidores (solo lectura) -->
-  <div>
-    <label>Seguidores:</label>
-    <span>{{ perfil.seguidores }}</span> <!-- Siempre muestra la cantidad de seguidores -->
-  </div>
-
-  <!-- Campo de Rol (solo lectura) -->
-  <div>
-    <label>Rol:</label>
-    <span>{{ perfil.rol }}</span> <!-- Siempre muestra el rol del usuario -->
-  </div>
-
-  <!-- Campo de Clave -->
-  <div>
-    <label>Clave:</label>
-    <span *ngIf="!isEditing">{{ perfil.clave }}</span> <!-- Muestra la clave en modo de solo lectura -->
-    <input *ngIf="isEditing" [(ngModel)]="perfil.clave"> <!-- Campo de entrada para editar la clave -->
-  </div>
-
-  <!-- Botón de Guardar que aparece solo en el modo de edición -->
-  <div *ngIf="isEditing">
-    <button (click)="saveChanges()">Guardar</button>
-  </div>
+  -->
 </div>
