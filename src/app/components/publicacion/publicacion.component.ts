@@ -28,7 +28,6 @@ export class PublicacionComponent {
       this.router.navigate(['/login']);
     }
     this.getAllPublicaciones();
-
   }
 
   getAllPublicaciones() {
