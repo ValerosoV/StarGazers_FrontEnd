@@ -31,29 +31,28 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      const decodedToken: any = jwt_decode(token);
-      const userId = decodedToken.userId;
-      this.getPerfilUsuario(userId);
-    } else {
-      console.log('No se encontró el token en el localStorage');
-    }
+    this.getPerfilUsuario();
   }
 
-  getPerfilUsuario(userId: string) {
-    this.perfilService.getPerfil(userId).subscribe(
-      (data: any) => {
-        this.perfilData = data;
-        this.perfilForm.patchValue({
-          nombre: data.nombre,
-          apellido: data.apellido,
-          nacionalidad: data.nacionalidad,
-          telefono: data.telefono,
-          intereses: data.intereses
-        });
-      }
-    );
+  getPerfilUsuario() {
+    const idConsultado = localStorage.getItem('id');
+    if (idConsultado) {
+        console.log(idConsultado);
+        this.perfilService.getPerfil(idConsultado).subscribe(
+          (data: any) => {
+            this.perfilData = data;
+            this.perfilForm.patchValue({
+                nombre: data.nombre,
+                apellido: data.apellido,
+                nacionalidad: data.nacionalidad,
+                telefono: data.telefono,
+                intereses: data.intereses
+            });
+          }
+        );
+    }else {      
+      console.log('El ID es nulo.');// aviso en caso en que el idConsultado es nulo
+    }     
   }
 
   onSubmit() {
@@ -65,7 +64,7 @@ export class PerfilComponent implements OnInit {
         this.perfilService.updatePerfil(userId, this.perfilForm.value).subscribe(() => {
           this.toastr.success('Perfil actualizado con éxito', 'Éxito');
           this.isEditing = false;
-          this.getPerfilUsuario(userId);
+          this.getPerfilUsuario();
         });
       }
     }
