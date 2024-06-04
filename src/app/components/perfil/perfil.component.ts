@@ -30,6 +30,7 @@ export class PerfilComponent implements OnInit {
       telefono: '',
       intereses: ''
     });
+
   }
 
   ngOnInit(): void {
@@ -39,70 +40,73 @@ export class PerfilComponent implements OnInit {
   getPerfilUsuario() {
     const idConsultado = localStorage.getItem('id');
     if (idConsultado) {
-        console.log(idConsultado);
-        this.perfilService.getPerfil(idConsultado).subscribe(
-          (data: any) => {
-            this.perfilData = data;
-            this.perfilForm.patchValue({
-                nombre: data.nombre,
-                apellido: data.apellido,
-                nacionalidad: data.nacionalidad,
-                telefono: data.telefono,
-                intereses: data.intereses
-            });
-          }
-        );
-    }else {      
+      this.perfilService.getPerfil(idConsultado).subscribe(
+        (data: any) => {
+          this.perfilData = data;
+          this.perfilForm.patchValue({
+            nombre: data.nombre,
+            apellido: data.apellido,
+            nacionalidad: data.nacionalidad,
+            telefono: data.telefono,
+            intereses: data.intereses
+          });
+        }
+      );
+    } else {
       console.log('El ID es nulo.');// aviso en caso en que el idConsultado es nulo
-    }     
+    }
   }
 
   editPerfil() {
-    if (this.perfilForm.valid) {                         //si el form es valid,
-      const token = localStorage.getItem('accessToken'); //busque el Token.
-      if (token) {                                       //si esta,
-        console.log(token+ 'es su token');               //muestrelo y 
-        const idConsultado = localStorage.getItem('id'); //busque su ID.
-        if (idConsultado) {                              //si lo encontro
-          console.log(idConsultado + 'es el id');        //muestrelo en consola
-          this.perfilService.updatePerfil(idConsultado, token, this.perfilForm.value).subscribe(() => { //AQUI SALE ERROR
+    if (this.perfilForm.valid) {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        const idConsultado = localStorage.getItem('id');
+        if (idConsultado) {
+          this.perfilService.updatePerfil(idConsultado, token, this.perfilForm.value).subscribe(() => {
             this.toastr.success('Perfil actualizado con éxito', 'Éxito');
-            this.isEditing = false;                       //cambia el estado de la variable que hace visible el Form
-            this.getPerfilUsuario();                      //recargue los datos del Peril
-            this.router.navigate(['/perfil']).then(() => {//recarga la página, 
-              this.newMessage('Publicado correctamente');
-            })
-          });
-        }
-      }
-    } else {console.log('El formulario del perfil no es valido');}
-  }
+            this.isEditing = false;
+            this.getPerfilUsuario();
+            //
+            console.log(this.perfilForm.controls['nombre'].value);
+            localStorage.setItem('nombre', this.perfilForm.controls['nombre'].value);
+            localStorage.setItem('apellido', this.perfilForm.controls['apellido'].value);
+            this.router.navigate(['/menu']).then(() => {
+              this.router.navigate(['/perfil']).then(() => {//recarga el componente, pero no los otros componentes
+                this.newMessage('Perfil Actualizado correctamente');
+              })
 
+            });
+          });
+        } else { console.log('El formulario del perfil no es valido'); }
+      }
+    }
+  }
   newMessage(messageText: string) {
     this.toastr.success('Clic aquí para actualizar la lista', messageText)
       .onTap
       .pipe(take(1))
       .subscribe(() => window.location.reload());
   }
-  
+
   enableEditing() {
     this.isEditing = true;
   }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
-  
+
     if (file) {
       // Crear un objeto FormData para enviar la imagen al servidor
       const formData = new FormData();
       formData.append('foto', file, file.name);
-  
+
       // Obtener el token JWT del localStorage
       const token = localStorage.getItem('accessToken');
       if (token) {
         const decodedToken: any = jwt_decode(token);
         const userId = decodedToken.userId;
-  
+
         // Llamar al método del servicio para subir la imagen al servidor
         this.perfilService.subirFotoPerfil(userId, formData).subscribe(
           (response: any) => {

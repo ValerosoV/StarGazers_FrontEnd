@@ -37,7 +37,11 @@
                 <div class="bg-secondary rounded h-100 p-4">
                     <h6 class="mb-4">Noticias</h6>
                     <div class="m-n2">
-                        <p>espacio a la derecha</p>
+                        
+                        <div *ngFor="let evento of eventosList">
+                        <h6>{{evento.titulo}}</h6>
+                        <p>{{evento.descripcion}}</p>
+                    </div>
                     </div>
                 </div>
             </div>

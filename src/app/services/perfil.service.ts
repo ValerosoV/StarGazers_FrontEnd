@@ -54,4 +54,10 @@ export class PerfilService {
     const url = `${this.apiUrl}/${userId}/foto`;
     return this.http.post(url, formData);
   }
+
+  getIntereses(userId: string): Observable<any> {
+    const url = `${this.apiUrl}/perfiles/interes/${userId}`;
+    return this.http.get(url);
+  }
+
 }

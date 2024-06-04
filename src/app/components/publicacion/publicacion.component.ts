@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
+import { EventosService } from 'src/app/services/eventos.service';
+import { PerfilService } from 'src/app/services/perfil.service';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 
 @Component({
@@ -16,11 +18,14 @@ export class PublicacionComponent {
     usuarioQueLaSubio: '',
     contenido: ''
   })
+  eventosList: any = [];
 
   constructor(private publicacionService: PublicacionService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private eventoService: EventosService,
+    private perfilService:PerfilService) {
   }
 
   ngOnInit() {
@@ -28,6 +33,7 @@ export class PublicacionComponent {
       this.router.navigate(['/login']);
     }
     this.getAllPublicaciones();
+    this.consultarEventosInteres();
   }
 
   getAllPublicaciones() {
@@ -57,8 +63,19 @@ export class PublicacionComponent {
       .pipe(take(1))
       .subscribe(() => window.location.reload());
   }
+  
+  /**/
 
+  consultarEventosInteres() {
+    this.eventoService.getEventosPorIntereses(
+      localStorage.getItem('accessToken'),
+      localStorage.getItem('id')+''
 
-
-
+    ).subscribe(
+      (data: {}) => {
+        this.eventosList = data;
+        console.log(this.eventosList);
+      }
+    );
+  }
 }

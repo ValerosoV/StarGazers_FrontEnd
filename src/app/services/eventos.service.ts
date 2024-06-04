@@ -63,5 +63,17 @@ export class EventosService {
         accessToken: `${token}`
       } });
   }
+
+  getEventosPorIntereses(token: any, data: any): Observable<any> {
+    console.log(data);
+    
+    return this.http.get(
+      this.apiUri+"/SegunIntereses/"+data, {headers:
+      {
+        'Content-Type': 'application/json',
+        accessToken: `${token}`
+      }
+    });
+  }
   /**/
 }
