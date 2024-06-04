@@ -1,3 +1,10 @@
 .separar_horizont {
     margin-bottom: 10px; /* Espacio entre contenedores */
 }
+
+.description-container {
+    margin: 20px auto;
+    text-align: center;
+    max-width: 400px; /* Ajusta esto según tus necesidades */
+  }
+ 
