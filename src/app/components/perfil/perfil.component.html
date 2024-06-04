@@ -1,10 +1,17 @@
-<!-- perfil.component.html -->
+
 <app-menu></app-menu>
 
 <div class="content">
   <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary rounded h-100 p-4">
       <div class="m-n2">
+
+        <div class="d-flex justify-content-end mb-4">
+          <button routerLink="/publicaciones" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Volver a Publicaciones
+          </button>
+        </div>
+        
         <h2 class="mb-4">Perfil de Usuario</h2>
 
         <div class="row">
@@ -17,6 +24,7 @@
               </div>
             </div>
           </div>
+          
 
           <div class="col-md-8" ><!--aqui estan los datos del perfil-->
             <div class="profile-info">

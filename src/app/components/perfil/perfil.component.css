@@ -42,4 +42,19 @@
     background-color: #0056b3;
   }
   
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
   
+  .back-link mat-icon,
+  .back-link .fas {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+  .back-icon:hover {
+    color: #6a006a; /* Cambia el color del icono al pasar el cursor */
+  }
