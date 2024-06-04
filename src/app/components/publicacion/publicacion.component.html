@@ -6,6 +6,7 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-secondary rounded h-100 p-4">
+                    
                     <div class="m-n2">
                         <form (ngSubmit)="newPublicacionEntry()" [formGroup]="publicacionForm">
                             <input type="text" class="form-control m-2" placeholder="Texto publicación"
@@ -35,7 +36,7 @@
             </div>
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-secondary rounded h-100 p-4">
-                    <h6 class="mb-4">Noticias</h6>
+                    <h4 class="mb-4">¿Qué hay de nuevo?</h4>
                     <div class="m-n2">
                         
                         <div *ngFor="let evento of eventosList">
