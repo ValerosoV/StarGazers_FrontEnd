@@ -3,7 +3,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PerfilService } from 'src/app/services/perfil.service';
-
+import { Router } from '@angular/router';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-perfil',
@@ -19,7 +20,8 @@ export class PerfilComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private perfilService: PerfilService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.perfilForm = this.formBuilder.group({
       nombre: '',
@@ -55,21 +57,34 @@ export class PerfilComponent implements OnInit {
     }     
   }
 
-  onSubmit() {
-    if (this.perfilForm.valid) {
-      const token = localStorage.getItem('accessToken');
-      if (token) {
-        const decodedToken: any = jwt_decode(token);
-        const userId = decodedToken.userId;
-        this.perfilService.updatePerfil(userId, this.perfilForm.value).subscribe(() => {
-          this.toastr.success('Perfil actualizado con éxito', 'Éxito');
-          this.isEditing = false;
-          this.getPerfilUsuario();
-        });
+  editPerfil() {
+    if (this.perfilForm.valid) {                         //si el form es valid,
+      const token = localStorage.getItem('accessToken'); //busque el Token.
+      if (token) {                                       //si esta,
+        console.log(token+ 'es su token');               //muestrelo y 
+        const idConsultado = localStorage.getItem('id'); //busque su ID.
+        if (idConsultado) {                              //si lo encontro
+          console.log(idConsultado + 'es el id');        //muestrelo en consola
+          this.perfilService.updatePerfil(idConsultado, token, this.perfilForm.value).subscribe(() => { //AQUI SALE ERROR
+            this.toastr.success('Perfil actualizado con éxito', 'Éxito');
+            this.isEditing = false;                       //cambia el estado de la variable que hace visible el Form
+            this.getPerfilUsuario();                      //recargue los datos del Peril
+            this.router.navigate(['/perfil']).then(() => {//recarga la página, 
+              this.newMessage('Publicado correctamente');
+            })
+          });
+        }
       }
-    }
+    } else {console.log('El formulario del perfil no es valido');}
   }
 
+  newMessage(messageText: string) {
+    this.toastr.success('Clic aquí para actualizar la lista', messageText)
+      .onTap
+      .pipe(take(1))
+      .subscribe(() => window.location.reload());
+  }
+  
   enableEditing() {
     this.isEditing = true;
   }

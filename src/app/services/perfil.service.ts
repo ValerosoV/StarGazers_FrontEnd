@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,16 @@ export class PerfilService {
     return this.http.get(url, { headers });
   }
 
-  updatePerfil(userId: string, data: any): Observable<any> {
+  updatePerfil(userId: string, token: any, data: any): Observable<any> { //la data podria o deberia ser User en vez de any?
     const url = `${this.apiUrl}/perfiles/${userId}`;
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put(url, data, { headers });
+    //const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(url, data, {
+      headers:
+      {
+        'Content-Type': 'application/json',
+        accessToken: `${token}`
+      }
+    });
   }
 
   subirFotoPerfil(userId: string, formData: FormData): Observable<any> {

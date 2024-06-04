@@ -45,7 +45,7 @@
 
         
         <div *ngIf="isEditing" class="edit-form">
-          <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="perfilForm" (ngSubmit)="editPerfil()">
             <div class="form-group">
               <label for="nombre">Nombre</label>
               <input type="text" class="form-control" id="nombre" formControlName="nombre">
