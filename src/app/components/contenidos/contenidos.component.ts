@@ -1,6 +1,11 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+<<<<<<< Updated upstream
 import { Router } from '@angular/router';
 import { ContenidosService } from 'src/app/services/contenidos.service';
+=======
+import { Observable } from 'rxjs';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-contenidos',
@@ -8,6 +13,7 @@ import { ContenidosService } from 'src/app/services/contenidos.service';
   styleUrls: ['./contenidos.component.css']
 })
 export class ContenidosComponent {
+<<<<<<< Updated upstream
   contenidoList: any = [];
 
   constructor(
@@ -28,4 +34,18 @@ export class ContenidosComponent {
         }
       );
     }
+=======
+  apiUrl = '/api/contenido';
+
+  constructor(private http: HttpClient) { }
+
+  getAllContenidosData(token: any): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/buscar`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'accessToken': `${token}`
+      })
+    });
+  }
+>>>>>>> Stashed changes
 }
