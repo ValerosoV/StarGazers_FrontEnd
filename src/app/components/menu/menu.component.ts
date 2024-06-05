@@ -32,5 +32,9 @@ export class MenuComponent {
   goToPerfil() {
     this.router.navigate(['/perfil']);
   }
+
+  goToEventos(){
+    this.router.navigate(['/eventos']);
+  }
 }
 

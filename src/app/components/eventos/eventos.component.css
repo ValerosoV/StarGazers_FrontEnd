@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filtros select {
+    margin-left: 10px;
+}
+
+#eventos-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.evento {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.evento h2 {
+    margin-top: 0;
+}
+
+.evento .fecha {
+    font-weight: bold;
+}
+
+.evento .descripcion {
+    margin-top: 10px;
+    color: #555;
+}
