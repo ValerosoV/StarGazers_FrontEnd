@@ -28,4 +28,8 @@ export class ContenidosComponent {
         }
       );
     }
+
+    verContenido(contenido: any) {
+      this.router.navigate(['/contenido', contenido._id]);
+    }
 }

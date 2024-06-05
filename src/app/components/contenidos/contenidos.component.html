@@ -1,15 +1,15 @@
 
 <app-menu></app-menu>
-<div class="content">
-    <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary rounded h-100 p-4">
-            <div class="m-n2">
-                <h2 class="mb-4">Contenidos</h2>
-            </div>
-        </div>
-    </div>
-</div>
-
+<div class="container">
+    <h1>Lista de Contenidos</h1>
+    <ul>
+      <li *ngFor="let contenido of contenidoList">
+        <h2>{{ contenido.titulo }}</h2>
+        <p>{{ contenido.descripcion }}</p>
+        <button (click)="verContenido(contenido)">Ver Contenido</button>
+      </li>
+    </ul>
+  </div>
 
 <!--div *ngFor="let contenido of contenidoList"></div>
     <div class="m-n2">
@@ -18,3 +18,4 @@
         <p>{{contenido.descripcion}}</p>
         <p>{{contenido.EnlaceContenido}}</p>
 </div-->
+
