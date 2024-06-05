@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { ContenidosComponent } from './components/contenidos/contenidos.component';
+
 
 const routes: Routes = [
   {path: '',component: PublicacionComponent},
@@ -17,6 +20,8 @@ const routes: Routes = [
   {path: 'menu',component: MenuComponent},
   {path: 'publicaciones',component: PublicacionComponent},
   {path: 'perfil',component: PerfilComponent},
+  {path: 'eventos',component: EventosComponent},
+  {path: 'contenidos',component: ContenidosComponent},
 ];
 
 @NgModule({

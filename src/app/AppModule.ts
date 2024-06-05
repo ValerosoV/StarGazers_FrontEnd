@@ -14,6 +14,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { ContenidosComponent } from './components/contenidos/contenidos.component';
 
 
 
@@ -27,6 +29,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     MenuComponent,
     PublicacionComponent,
     PerfilComponent,
+    EventosComponent,
+    ContenidosComponent
 
   ],
   imports: [
