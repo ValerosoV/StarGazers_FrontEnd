@@ -31,9 +31,12 @@ export class PublicacionComponent {
   ngOnInit() {
     if (localStorage.getItem('rol') == null) {
       this.router.navigate(['/login']);
+      
+    }else {
+      this.getAllPublicaciones();
+      this.consultarEventosInteres();
     }
-    this.getAllPublicaciones();
-    this.consultarEventosInteres();
+    
   }
 
   getAllPublicaciones() {

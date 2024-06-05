@@ -20,7 +20,7 @@ export class SignupComponent {
   }
 
   onReturn(): void {
-    this.router.navigateByUrl('/publicaciones');
+    this.router.navigateByUrl('/login');
   }
 
   onRegister(form: any): void {
