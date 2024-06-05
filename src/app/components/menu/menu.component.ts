@@ -8,8 +8,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
 
-  title = 'Zoológico';
-  user = 'Usuario';
+
   rolUsuario = 0;
   nombreUsuario = "";
   apellidoUsuario = "";

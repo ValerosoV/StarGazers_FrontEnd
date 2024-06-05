@@ -7,7 +7,7 @@ import { Component, Inject } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'webzoologico';
+  title = 'Stargazers';
   titlePage = '';
 
   constructor(@Inject(DOCUMENT) private document: Document){

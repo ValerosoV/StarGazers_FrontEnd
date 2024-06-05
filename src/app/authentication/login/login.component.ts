@@ -20,6 +20,7 @@ export class LoginComponent {
   }
 
   onLogin(form: any): void {
+    //console.log(form);
     this.authenticationService.login(form.value).subscribe(
       (res) => {
         localStorage.setItem('accessToken',JSON.parse(JSON.stringify(res)).accessToken);
