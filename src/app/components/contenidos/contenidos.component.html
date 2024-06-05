@@ -1,21 +1,18 @@
-
 <app-menu></app-menu>
-<div class="container">
-    <h1>Lista de Contenidos</h1>
-    <ul>
-      <li *ngFor="let contenido of contenidoList">
-        <h2>{{ contenido.titulo }}</h2>
-        <p>{{ contenido.descripcion }}</p>
-        <button (click)="verContenido(contenido)">Ver Contenido</button>
-      </li>
-    </ul>
+<div class="container pt-4 px-4" style="margin-left: 15%;">
+
+  <div class="row">
+    <h1 style="margin-left: 17%;">Lista de Contenidos</h1>
+    <div class="col-md-8 offset-md-2" *ngFor="let contenido of contenidoList">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">{{ contenido.titulo }}</h2>
+          <p class="card-text">{{ contenido.descripcion }}</p>
+          <p class="card-text">Tipo: {{ contenido.tipo }}</p>
+          <p class="card-text">Enlace: {{ contenido.EnlaceContenido }}</p>
+          <button class="btn btn-primary" (click)="verContenido(contenido)">Ver Contenido</button>
+        </div>
+      </div>
+    </div>
   </div>
-
-<!--div *ngFor="let contenido of contenidoList"></div>
-    <div class="m-n2">
-        <h6>{{contenido.titulo}}</h6>
-        <p>{{contenido.tipo}}</p>
-        <p>{{contenido.descripcion}}</p>
-        <p>{{contenido.EnlaceContenido}}</p>
-</div-->
-
+</div>
